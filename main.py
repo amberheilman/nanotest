@@ -1,25 +1,34 @@
-from testcase import TestCase
+from unittest import TestCase
 
-while True:
-    quantity = raw_input("Please input quantity: ")
+def validate_quantity(data):
     try:
-        int(quantity)
-        break
+        int(data)
+        return True
     except ValueError:
-        print("Please input an integer!")
+        return False
 
 
-print(quantity)
+if __name__ == '__main__':
+    while True:
+        quantity = raw_input("Please input quantity: ")
+        try:
+            int(quantity)
+            break
+        except ValueError:
+            print("Please input an integer!")
 
-price = raw_input("Please input price: ")
-print(price)
 
-state = raw_input("Please input state: ")
-print(state)
+    print(quantity)
+
+    price = raw_input("Please input price: ")
+    print(price)
+
+    state = raw_input("Please input state: ")
+    print(state)
 
 
 class ValidateQuantityTest(TestCase):
 
     def should_return_true_on_valid_input(self):
-        returned = validate_input(5)
+        returned = quantity(5)
         self.assertTrue(returned)
